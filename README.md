@@ -68,3 +68,10 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+Example 2: In this example, we will map an Array of objects containing student Marks into a Table.
+
+Note: To run the below example, you need to install react-bootstrap and bootstrap.
+
+npm install react-bootstrap bootstrap@5.1.3 bootstrap
