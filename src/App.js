@@ -1,6 +1,5 @@
-import RenderingArrayOfObjects2 from "./RenderingArrayOfObjects2";
-import Table from 'react-bootstrap/Table';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Timer from "./Timer";
 
 
 function App() {
@@ -11,7 +10,7 @@ function App() {
               <h3>Rendering Array of Objects</h3>
 
               <br></br>
-              <RenderingArrayOfObjects2 />
+              <Timer />
 
           </div>
       </div>
