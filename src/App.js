@@ -1,5 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Timer from "./Timer";
+import GetTitle from './GetTitle';
 
 
 function App() {
@@ -10,7 +10,7 @@ function App() {
               <h3>Rendering Array of Objects</h3>
 
               <br></br>
-              <Timer />
+              <GetTitle/>
 
           </div>
       </div>
