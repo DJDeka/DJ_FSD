@@ -1,20 +1,21 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
-import GetTitle from './GetTitle';
 
+import React from "react";
+import { createContext} from "react";
+import Child3 from "./Child3";
 
-function App() {
-  return (
-      <div className="App">
-          <div>
-              <h1 style={{ color: 'green' }}>GeeksforGeeks</h1>
-              <h3>Rendering Array of Objects</h3>
+const Context = createContext();
 
-              <br></br>
-              <GetTitle/>
-
-          </div>
-      </div>
-  );
-}
+const App = () => {
+    return (
+        
+        <Context.Provider value={{ data: "Data xxxxxxx" }}>
+        <Child3/>
+        </Context.Provider>
+       
+    );
+  };
 
 export default App;
+export {Context};
+
+
