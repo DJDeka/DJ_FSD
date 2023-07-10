@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<!-- saved from url=(0064)https://www.pragimtech.com/blog/reactjs/useeffect-hook-in-react/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 		
+        <title>useEffect hook in React</title>	
+        <!-- html meta data --> 
+        <meta http-equiv="expires" content="0">
+        <meta name="description" content="what is useEffect hook in React, introduction to useEffect hook in React, useEffect hook for Beginners">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta property="og:image" content="https://www.pragimtech.com/blog//assets_v_0.9/img/logo-dark.png">        <!-- load css includes -->
+		
+		<link rel="stylesheet" href="./useEffect hook in React_files/bootstrap.min.css">														  
+		<link rel="stylesheet" href="./useEffect hook in React_files/override.css">
+		<link rel="stylesheet" href="./useEffect hook in React_files/main.css">
+		<style>
+		td, th {
+    		padding: 10px;
+		}
+
+		</style> 
+		
+		<script src="./useEffect hook in React_files/f(4).txt"></script><script type="text/javascript" async="" src="./useEffect hook in React_files/analytics.js.download"></script><script type="text/javascript" async="" src="./useEffect hook in React_files/analytics.js.download"></script><script type="text/javascript" async="" src="./useEffect hook in React_files/js"></script><script src="./useEffect hook in React_files/f(5).txt" id="google_shimpl"></script><script>
+			var data_ad_client = "ca-pub-7734594910835218";
+			var data_ad_slot = "4396868448";
+		</script>
+	 <script data-ad-client="ca-pub-6328538092426311" async="" src="./useEffect hook in React_files/f(6).txt" data-checked-head="true"></script>	
+	 
+    <script src="./useEffect hook in React_files/clipboard.min.js.download"></script><meta http-equiv="origin-trial" content="A7CQXglZzTrThjGTBEn1rWTxHOEtkWivwzgea+NjyardrwlieSjVuyG44PkYgIPGs8Q9svD8sF3Yedn0BBBjXAkAAACFeyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjk1MTY3OTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlfQ=="><meta http-equiv="origin-trial" content="A3vKT9yxRPjmXN3DpIiz58f5JykcWHjUo/W7hvmtjgh9jPpQgem9VbADiNovG8NkO6mRmk70Kex8/KUqAYWVWAEAAACLeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXN5bmRpY2F0aW9uLmNvbTo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjk1MTY3OTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlfQ=="><meta http-equiv="origin-trial" content="A4A26Ymj79UVY7C7JGUS4BG1s7MdcDokAQf/RP0paks+RoTYbXHxceT/5L4iKcsleFCngi75YfNRGW2+SpVv1ggAAACLeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXRhZ3NlcnZpY2VzLmNvbTo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjk1MTY3OTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlfQ=="><meta http-equiv="origin-trial" content="As0hBNJ8h++fNYlkq8cTye2qDLyom8NddByiVytXGGD0YVE+2CEuTCpqXMDxdhOMILKoaiaYifwEvCRlJ/9GcQ8AAAB8eyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiV2ViVmlld1hSZXF1ZXN0ZWRXaXRoRGVwcmVjYXRpb24iLCJleHBpcnkiOjE3MTk1MzI3OTksImlzU3ViZG9tYWluIjp0cnVlfQ=="><meta http-equiv="origin-trial" content="AgRYsXo24ypxC89CJanC+JgEmraCCBebKl8ZmG7Tj5oJNx0cmH0NtNRZs3NB5ubhpbX/bIt7l2zJOSyO64NGmwMAAACCeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXN5bmRpY2F0aW9uLmNvbTo0NDMiLCJmZWF0dXJlIjoiV2ViVmlld1hSZXF1ZXN0ZWRXaXRoRGVwcmVjYXRpb24iLCJleHBpcnkiOjE3MTk1MzI3OTksImlzU3ViZG9tYWluIjp0cnVlfQ=="><meta http-equiv="origin-trial" content="A7CQXglZzTrThjGTBEn1rWTxHOEtkWivwzgea+NjyardrwlieSjVuyG44PkYgIPGs8Q9svD8sF3Yedn0BBBjXAkAAACFeyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjk1MTY3OTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlfQ=="><meta http-equiv="origin-trial" content="A3vKT9yxRPjmXN3DpIiz58f5JykcWHjUo/W7hvmtjgh9jPpQgem9VbADiNovG8NkO6mRmk70Kex8/KUqAYWVWAEAAACLeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXN5bmRpY2F0aW9uLmNvbTo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjk1MTY3OTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlfQ=="><meta http-equiv="origin-trial" content="A4A26Ymj79UVY7C7JGUS4BG1s7MdcDokAQf/RP0paks+RoTYbXHxceT/5L4iKcsleFCngi75YfNRGW2+SpVv1ggAAACLeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXRhZ3NlcnZpY2VzLmNvbTo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjk1MTY3OTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlfQ=="><meta http-equiv="origin-trial" content="As0hBNJ8h++fNYlkq8cTye2qDLyom8NddByiVytXGGD0YVE+2CEuTCpqXMDxdhOMILKoaiaYifwEvCRlJ/9GcQ8AAAB8eyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiV2ViVmlld1hSZXF1ZXN0ZWRXaXRoRGVwcmVjYXRpb24iLCJleHBpcnkiOjE3MTk1MzI3OTksImlzU3ViZG9tYWluIjp0cnVlfQ=="><meta http-equiv="origin-trial" content="AgRYsXo24ypxC89CJanC+JgEmraCCBebKl8ZmG7Tj5oJNx0cmH0NtNRZs3NB5ubhpbX/bIt7l2zJOSyO64NGmwMAAACCeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXN5bmRpY2F0aW9uLmNvbTo0NDMiLCJmZWF0dXJlIjoiV2ViVmlld1hSZXF1ZXN0ZWRXaXRoRGVwcmVjYXRpb24iLCJleHBpcnkiOjE3MTk1MzI3OTksImlzU3ViZG9tYWluIjp0cnVlfQ=="><meta http-equiv="origin-trial" content="A7CQXglZzTrThjGTBEn1rWTxHOEtkWivwzgea+NjyardrwlieSjVuyG44PkYgIPGs8Q9svD8sF3Yedn0BBBjXAkAAACFeyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjk1MTY3OTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlfQ=="><meta http-equiv="origin-trial" content="A3vKT9yxRPjmXN3DpIiz58f5JykcWHjUo/W7hvmtjgh9jPpQgem9VbADiNovG8NkO6mRmk70Kex8/KUqAYWVWAEAAACLeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXN5bmRpY2F0aW9uLmNvbTo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjk1MTY3OTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlfQ=="><meta http-equiv="origin-trial" content="A4A26Ymj79UVY7C7JGUS4BG1s7MdcDokAQf/RP0paks+RoTYbXHxceT/5L4iKcsleFCngi75YfNRGW2+SpVv1ggAAACLeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXRhZ3NlcnZpY2VzLmNvbTo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjk1MTY3OTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlfQ=="><meta http-equiv="origin-trial" content="As0hBNJ8h++fNYlkq8cTye2qDLyom8NddByiVytXGGD0YVE+2CEuTCpqXMDxdhOMILKoaiaYifwEvCRlJ/9GcQ8AAAB8eyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiV2ViVmlld1hSZXF1ZXN0ZWRXaXRoRGVwcmVjYXRpb24iLCJleHBpcnkiOjE3MTk1MzI3OTksImlzU3ViZG9tYWluIjp0cnVlfQ=="><meta http-equiv="origin-trial" content="AgRYsXo24ypxC89CJanC+JgEmraCCBebKl8ZmG7Tj5oJNx0cmH0NtNRZs3NB5ubhpbX/bIt7l2zJOSyO64NGmwMAAACCeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXN5bmRpY2F0aW9uLmNvbTo0NDMiLCJmZWF0dXJlIjoiV2ViVmlld1hSZXF1ZXN0ZWRXaXRoRGVwcmVjYXRpb24iLCJleHBpcnkiOjE3MTk1MzI3OTksImlzU3ViZG9tYWluIjp0cnVlfQ=="><meta http-equiv="origin-trial" content="A7CQXglZzTrThjGTBEn1rWTxHOEtkWivwzgea+NjyardrwlieSjVuyG44PkYgIPGs8Q9svD8sF3Yedn0BBBjXAkAAACFeyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjk1MTY3OTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlfQ=="><meta http-equiv="origin-trial" content="A3vKT9yxRPjmXN3DpIiz58f5JykcWHjUo/W7hvmtjgh9jPpQgem9VbADiNovG8NkO6mRmk70Kex8/KUqAYWVWAEAAACLeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXN5bmRpY2F0aW9uLmNvbTo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjk1MTY3OTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlfQ=="><meta http-equiv="origin-trial" content="A4A26Ymj79UVY7C7JGUS4BG1s7MdcDokAQf/RP0paks+RoTYbXHxceT/5L4iKcsleFCngi75YfNRGW2+SpVv1ggAAACLeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXRhZ3NlcnZpY2VzLmNvbTo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjk1MTY3OTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlfQ=="><meta http-equiv="origin-trial" content="As0hBNJ8h++fNYlkq8cTye2qDLyom8NddByiVytXGGD0YVE+2CEuTCpqXMDxdhOMILKoaiaYifwEvCRlJ/9GcQ8AAAB8eyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiV2ViVmlld1hSZXF1ZXN0ZWRXaXRoRGVwcmVjYXRpb24iLCJleHBpcnkiOjE3MTk1MzI3OTksImlzU3ViZG9tYWluIjp0cnVlfQ=="><meta http-equiv="origin-trial" content="AgRYsXo24ypxC89CJanC+JgEmraCCBebKl8ZmG7Tj5oJNx0cmH0NtNRZs3NB5ubhpbX/bIt7l2zJOSyO64NGmwMAAACCeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXN5bmRpY2F0aW9uLmNvbTo0NDMiLCJmZWF0dXJlIjoiV2ViVmlld1hSZXF1ZXN0ZWRXaXRoRGVwcmVjYXRpb24iLCJleHBpcnkiOjE3MTk1MzI3OTksImlzU3ViZG9tYWluIjp0cnVlfQ=="><link rel="preload" href="./useEffect hook in React_files/f(7).txt" as="script"><script type="text/javascript" src="./useEffect hook in React_files/f(7).txt"></script></head>
+    
+    <body>
+        <div id="wrapper">
+	        <div id="sidebar-nav" class="sidebar" style="overflow-y: scroll; ">
+	<div>
+		<nav>
+			<ul class="nav">
+<select style="margin:auto; max-width:95%; width: 500px; 
+						align-item:center; margin-top:15px;" class="form-control" id="sidebar_course_selection"><option value="https://www.pragimtech.com/blog/c-programming-tutorials/introduction-to-c/">C Programming</option><option value="https://www.pragimtech.com/blog/blazor/what-is-blazor/">.NET Blazor</option><option value="https://www.pragimtech.com/blog/reactjs/reactjs-introduction/">React JS</option><option value="https://www.pragimtech.com/blog/python-tutorial/python-introduction">Python</option><option value="https://www.pragimtech.com/blog/cloud/cloud-tutorial-for-beginners/">Cloud</option><option value="https://www.pragimtech.com/blog/golang-tutorials/golang-introduction">Golang</option><option value="https://www.pragimtech.com/blog/azure/azure-tutorials-for-beginners">azure</option><option value="https://www.pragimtech.com/blog/sql-optimization/how-is-data-stored-in-sql-database">SQL Optimization</option><option value="https://www.pragimtech.com/blog/blazor-webAssembly/what-is-asp-net-core-5">Blazor WebAssembly</option><option value="https://www.pragimtech.com/blog/mongodb-tutorial/relational-and-non-relational-databases">MongoDB Tutorial</option><option value="https://www.pragimtech.com/blog/tableau/tableau-course-for-beginners">Tableau</option> </select><script>document.getElementById("sidebar_course_selection").selectedIndex="2";</script><li class="sidebar_topic_title"><h1 style="text-align:left;">ReactJS tutorial</h1></li><li><a href="https://www.pragimtech.com/blog/reactjs/reactjs-introduction" id="2320200224161207">ReactJS Introduction</a></li><li><a href="https://www.pragimtech.com/blog/reactjs/install-reactjs" id="2320200302104258">ReactJS Installation</a></li><li><a href="https://www.pragimtech.com/blog/reactjs/introduction-to-react-elements" id="2320200414143139">React Elements</a></li><li><a href="https://www.pragimtech.com/blog/reactjs/Introduction-to-Function-Components-React" id="2320200414145053">Function Components</a></li><li><a href="https://www.pragimtech.com/blog/reactjs/introduction-to-class-components-in-react" id="2320200414151842">Class Components </a></li><li><a href="https://www.pragimtech.com/blog/reactjs/state-in-react" id="2320200414154433">State in React</a></li><li><a href="https://www.pragimtech.com/blog/reactjs/interaction-between-components-in-react" id="2320200414163010">Component Interaction</a></li><li><a href="https://www.pragimtech.com/blog/reactjs/component-communication-using-context" id="2320200414164947">Component Communication-1</a></li><li><a href="https://www.pragimtech.com/blog/reactjs/component-communication-using-context-part-2" id="2320200414170809">Component Communication-2</a></li><li><a href="https://www.pragimtech.com/blog/reactjs/iterate-list-in-react" id="2320200414174554">Iterating through Lists</a></li><li><a href="https://www.pragimtech.com/blog/reactjs/calling-rest-api-from-react" id="2320200414180217">Calling REST API</a></li><li><a href="https://www.pragimtech.com/blog/reactjs/how-to-send-post-request-to-web-api" id="2320200414182808">Sending POST request</a></li><li><a href="https://www.pragimtech.com/blog/reactjs/how-to-build-forms-in-reactjs" id="2320200412210432">ReactJS Building forms</a></li><li><a href="https://www.pragimtech.com/blog/reactjs/Validate-forms-in-react" id="2320200414132324">Forms Validation</a></li><li><a href="https://www.pragimtech.com/blog/reactjs/forms-validation-part-2" id="2320200416152122">Forms Validation Part-2</a></li><li><a href="https://www.pragimtech.com/blog/reactjs/lifting-state-up-in-react" id="2320200417215239">Lifting State Up</a></li><li><a href="https://www.pragimtech.com/blog/reactjs/error-boundaries-in-react" id="2320200419153844">Error Boundaries</a></li><li><a href="https://www.pragimtech.com/blog/reactjs/fragments-in-react" id="2320200420162023">Fragments</a></li><li><a href="https://www.pragimtech.com/blog/reactjs/refs-in-react" id="2320200421204305">Refs and DOM</a></li><li><a href="https://www.pragimtech.com/blog/reactjs/refs-part-2-in-react" id="2320200422203054">Refs Part 2</a></li><li><a href="https://www.pragimtech.com/blog/reactjs/higher-order-components-in-react" id="2320200423200744">Higher Order Components</a></li><li><a href="https://www.pragimtech.com/blog/reactjs/portals-in-react" id="2320200424141042">Portals</a></li><li><a href="https://www.pragimtech.com/blog/reactjs/profiler-in-react" id="2320200425142748">Profiler</a></li><li><a href="https://www.pragimtech.com/blog/reactjs/render-props-in-react" id="2320200426181534">Render Props</a></li><li><a href="https://www.pragimtech.com/blog/reactjs/pure-components-in-react" id="2320200429203459">Pure Components</a></li><li><a href="https://www.pragimtech.com/blog/reactjs/component-lifecycle-methods-in-react" id="2320200501151508">Component Lifecycle Methods</a></li><li><a href="https://www.pragimtech.com/blog/reactjs/introduction-to-hooks-in-react" id="2320200502230958">Introduction to Hooks in React</a></li><li><a href="https://www.pragimtech.com/blog/reactjs/usestate-hook-in-react" id="2320200503182607">useState Hook</a></li><li><a href="https://www.pragimtech.com/blog/reactjs/usestate-component-communication-in-react" id="2320200503184707">useState Part-2</a></li><li><a href="https://www.pragimtech.com/blog/reactjs/useeffect-hook-in-react" id="2320200504164409" class="active">useEffect Hook</a></li><li><a href="https://www.pragimtech.com/blog/reactjs/useeffect-part-2-in-react" id="2320200505184454">useEffect Part-2</a></li><li><a href="https://www.pragimtech.com/blog/reactjs/useeffect-part-3-in-react" id="2320200506173206">useEffect Part-3</a></li><li><a href="https://www.pragimtech.com/blog/reactjs/usecontext-hook-in-react" id="2320200507181814">useContext Hook</a></li><li><a href="https://www.pragimtech.com/blog/reactjs/usecontext-part-2-in-react" id="2320200508195638">useContext Part-2</a></li><li><a href="https://www.pragimtech.com/blog/reactjs/custom-hooks-in-react" id="2320200510201106">Custom Hooks</a></li><li><a href="https://www.pragimtech.com/blog/reactjs/custom-hooks-from-npm-in-react" id="2320200511205142">Custom Hooks from NPM</a></li><li><a href="https://www.pragimtech.com/blog/reactjs/routing-in-react" id="2320200512213107">Routing</a></li><li><a href="https://www.pragimtech.com/blog/reactjs/routing-part-2-in-react" id="2320200513224200">Routing Part-2</a></li><li><a href="https://www.pragimtech.com/blog/reactjs/routing-part-3-in-react" id="2320200515221719">Routing Part-3</a></li><li><a href="https://www.pragimtech.com/blog/reactjs/routing-part-4-in-react" id="2320200516221507">Routing Part-4</a></li><li><a href="https://www.pragimtech.com/blog/reactjs/routing-part-5-in-react" id="2320200520200831">Routing Part-5</a></li><li><a href="https://www.pragimtech.com/blog/reactjs/protected-routes-in-react" id="2320200526213359">Protected Routes</a></li><li><a href="https://www.pragimtech.com/blog/reactjs/prevent-avigation-in-routing" id="2320200529210527">Prevent Transition</a></li><li><a href="https://www.pragimtech.com/blog/reactjs/redux-in-react" id="2320200606213805">Redux Part-1</a></li><br><br><br><br><br>   
+
+					</ul>
+				</nav>
+		</div> 
+		</div><nav class="navbar navbar-default navbar-fixed-top">
+	<div class="brand">
+		<a href="https://www.pragimtech.com/blog/"><img src="./useEffect hook in React_files/pragimtech_logo.png" alt="Pragimtech" class="img-responsive logo"></a>	</div>
+	<div class="container-fluid">
+		<div class="navbar-btn">
+			<button type="button" class="btn-toggle-fullwidth"><i class="fa fa-bars"></i></button>
+		</div>
+		</div>
+</nav>	        <div class="main">
+		        <div class="article_view" style="height: auto !important;">
+					
+		            <h1 class="article-page-article-title">useEffect</h1>			
+			        <br>    
+                    <div class="article_body">
+                        
+
+
+
+
+<p>Many times, we want to run some additional code after React has updated the DOM.</p>
+<p>That code can be getting the Data by Calling a Web API or Setting up subscriptions or writing the logs after the DOM is ready.&nbsp;</p>
+<p>If we want to write such additional code in Class Components, we have lifecycle methods like componentDidMount, componentDidUpdate methods.&nbsp;</p>
+<p>What if, if want to write such code in the case of function components.</p>
+<p>Lets Open index.js file from our demo-project.&nbsp;</p>
+<p>Lets create EmployeeReports Component using which we display the list of Employees by fetching it from API.</p>
+<p>We know how to send a Web API request and get the data from our React Application. But now question is where should we write the code.&nbsp;</p>
+<p>Remember that we want to execute that code after DOM is ready.&nbsp;</p>
+<p>If we think of writing just before our return statement, just lets do one thing. We will write a console log here which shows us the DOM status.&nbsp;</p>
+<div class="code-toolbar"><pre class=" language-javascript"><code class=" language-javascript">console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>document<span class="token punctuation">.</span>readyState<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre><div class="toolbar"><div class="toolbar-item"><button>Copy</button></div></div></div>
+<p>Call our Employee Reports Component and render that to our root container.&nbsp;</p>
+<p>At this point of time, our table will be empty without data because we are yet to send the Web API request to get the data.&nbsp;</p>
+<p>Save the changes, navigate to the browser.&nbsp;</p>
+<p>We can see the table but no data. Lets open developer tools, we can see the status. It says that loading.&nbsp;</p>
+<p>That means we should not be writing the Code here.&nbsp;</p>
+<p>So where should we write the code which should get executed after our DOM is ready.&nbsp;</p>
+<p>This is where we will make use of another hook in React called as <strong>useEffect</strong>.&nbsp;</p>
+<p><strong>useEffect is a </strong>function that runs when the component is first rendered, and on every subsequent re-render/update.</p>
+<p>We can think of <strong>useEffect </strong>Hook as <strong>componentDidMount</strong>, <strong>componentDidUpdate</strong>, and <strong>componentWillUnmount</strong> combined.</p>
+<p>Lets call useEffect function and it takes one callback function as a parameter.&nbsp;</p>
+<p>We will write one arrow function. Inside that function, lets place the same console.log statement we have written earlier. Save the changes, navigate to the browser.&nbsp;</p>
+<p>Open developer tools and we can see that the status is Complete.&nbsp;</p>
+<p>Our DOM is ready and we can do all the other operations we want now.&nbsp;</p>
+<p>Lets go back to Visual studio code, now within this useEffect, lets place the code using which we will send the API request. We have discussed this already in our previous sessions. I am pasting that code here. When we get the response from our Web API, we will call our setEmployees function and we will pass the list to that.&nbsp;</p>
+<p>Save the changes, navigate to the browser. We can see that employee details are being displayed here.&nbsp;</p>
+<p>When the DOM is ready, we are sending the API request, getting the employees data and updating our employees state variable by calling setEmployees method. But this has a Problem. Remember that when there is any change in the properties data or state data of a component, then that component gets re-rendered.&nbsp;</p>
+<p>Resulting our useEffect function gets called again. It will send an API request, get the data and assign it to employees state variable. That will make the component gets re-rendered and it will go into infinite loop.&nbsp;</p>
+<p>Lets add an alert. Save the changes, navigate to the browser. We can see that we get the alert again and again.&nbsp;</p>
+<p>If you want to run an effect only once (on mount and unmount), you can pass an empty array ([]) as a second argument. This tells React that your effect doesn’t depend on any values from props or state, so it never needs to re-run.</p>
+<div class="code-toolbar"><pre class=" language-javascript"><code class=" language-javascript"><span class="token keyword">import</span> ReactDOM <span class="token keyword">from</span> <span class="token string">"react-dom"</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> React<span class="token punctuation">,</span> <span class="token punctuation">{</span> Component<span class="token punctuation">,</span> useState<span class="token punctuation">,</span> useEffect <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"react"</span><span class="token punctuation">;</span>
+
+<span class="token keyword">function</span> <span class="token function">EmployeeComponent</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token keyword">const</span> <span class="token punctuation">[</span>employees<span class="token punctuation">,</span>setEmployees<span class="token punctuation">]</span><span class="token operator">=</span><span class="token function">useState</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token function">useEffect</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">=&gt;</span><span class="token punctuation">{</span>
+    <span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">'We are in useEffect function'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">fetch</span><span class="token punctuation">(</span><span class="token string">"https://localhost:44306/api/Employee"</span><span class="token punctuation">)</span>
+      <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token parameter">res</span> <span class="token operator">=&gt;</span> res<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+      <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span>
+        <span class="token punctuation">(</span><span class="token parameter">result</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+          <span class="token function">setEmployees</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  
+  <span class="token keyword">return</span><span class="token punctuation">(</span>
+    <span class="token operator">&lt;</span>div<span class="token operator">&gt;</span>
+      <span class="token operator">&lt;</span>h2<span class="token operator">&gt;</span>Employees Data<span class="token operator">...</span><span class="token operator">&lt;</span><span class="token operator">/</span>h2<span class="token operator">&gt;</span>
+      <span class="token operator">&lt;</span>table<span class="token operator">&gt;</span>
+        <span class="token operator">&lt;</span>thead<span class="token operator">&gt;</span>
+          <span class="token operator">&lt;</span>tr<span class="token operator">&gt;</span>
+            <span class="token operator">&lt;</span>th<span class="token operator">&gt;</span>Id<span class="token operator">&lt;</span><span class="token operator">/</span>th<span class="token operator">&gt;</span>
+            <span class="token operator">&lt;</span>th<span class="token operator">&gt;</span>Name<span class="token operator">&lt;</span><span class="token operator">/</span>th<span class="token operator">&gt;</span>
+            <span class="token operator">&lt;</span>th<span class="token operator">&gt;</span>Location<span class="token operator">&lt;</span><span class="token operator">/</span>th<span class="token operator">&gt;</span>
+            <span class="token operator">&lt;</span>th<span class="token operator">&gt;</span>Salary<span class="token operator">&lt;</span><span class="token operator">/</span>th<span class="token operator">&gt;</span>
+          <span class="token operator">&lt;</span><span class="token operator">/</span>tr<span class="token operator">&gt;</span>
+        <span class="token operator">&lt;</span><span class="token operator">/</span>thead<span class="token operator">&gt;</span>
+        <span class="token operator">&lt;</span>tbody<span class="token operator">&gt;</span>
+          <span class="token punctuation">{</span>employees<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token parameter">emp</span><span class="token operator">=&gt;</span><span class="token punctuation">(</span>
+            <span class="token operator">&lt;</span>tr key<span class="token operator">=</span><span class="token punctuation">{</span>emp<span class="token punctuation">.</span>Id<span class="token punctuation">}</span><span class="token operator">&gt;</span>
+              <span class="token operator">&lt;</span>td<span class="token operator">&gt;</span><span class="token punctuation">{</span>emp<span class="token punctuation">.</span>Id<span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>td<span class="token operator">&gt;</span>
+              <span class="token operator">&lt;</span>td<span class="token operator">&gt;</span><span class="token punctuation">{</span>emp<span class="token punctuation">.</span>Name<span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>td<span class="token operator">&gt;</span>
+              <span class="token operator">&lt;</span>td<span class="token operator">&gt;</span><span class="token punctuation">{</span>emp<span class="token punctuation">.</span>Location<span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>td<span class="token operator">&gt;</span>
+              <span class="token operator">&lt;</span>td<span class="token operator">&gt;</span><span class="token punctuation">{</span>emp<span class="token punctuation">.</span>Salary<span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>td<span class="token operator">&gt;</span>
+            <span class="token operator">&lt;</span><span class="token operator">/</span>tr<span class="token operator">&gt;</span>
+          <span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">}</span>
+        <span class="token operator">&lt;</span><span class="token operator">/</span>tbody<span class="token operator">&gt;</span>
+      <span class="token operator">&lt;</span><span class="token operator">/</span>table<span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+  <span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> element<span class="token operator">=</span><span class="token operator">&lt;</span>EmployeeComponent<span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>EmployeeComponent<span class="token operator">&gt;</span>
+
+ReactDOM<span class="token punctuation">.</span><span class="token function">render</span><span class="token punctuation">(</span>element<span class="token punctuation">,</span>document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">"root"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre><div class="toolbar"><div class="toolbar-item"><button>Copy</button></div></div></div>
+<h3>Video Reference:</h3>
+<div class="embed-responsive embed-responsive-16by9"><iframe src="./useEffect hook in React_files/4xBLyslzDM0.html" width="560" height="315" frameborder="0" allowfullscreen="allowfullscreen" data-mce-fragment="1"></iframe></div>
+
+                        <br>
+                        <div style="height:50px">
+                            <a href="https://www.pragimtech.com/blog/reactjs/usestate-component-communication-in-react"><img class="prev_icon" src="./useEffect hook in React_files/prev.png"></a>
+                            <a href="https://www.pragimtech.com/blog/reactjs/useeffect-part-2-in-react"><img class="next_icon" src="./useEffect hook in React_files/next.png"></a>
+                        </div>
+                    </div>
+					
+					<div>
+					
+					<script async="" src="./useEffect hook in React_files/f(6).txt"></script>				
+	<ins class="adsbygoogle" style="display: block; height: 350px;" data-ad-client="ca-pub-7734594910835218" data-ad-slot="4396868448" data-ad-format="auto" data-full-width-responsive="true" data-adsbygoogle-status="done" data-ad-status="filled"><div id="aswift_1_host" tabindex="0" title="Advertisement" aria-label="Advertisement" style="border: none; height: 350px; width: 791px; margin: 0px; padding: 0px; position: relative; visibility: visible; background-color: transparent; display: inline-block; overflow: hidden;"><iframe id="aswift_1" name="aswift_1" style="left: 0px; position: absolute; top: 0px; border: 0px; width: 791px; height: 350px;" sandbox="allow-forms allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-top-navigation-by-user-activation" width="791" height="350" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" src="./useEffect hook in React_files/ads.html" data-google-container-id="a!2" data-google-query-id="CNvLw9ObgoADFZuTrAIdNpEG4w" data-load-complete="true"></iframe></div></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+					
+					</div>
+                    
+                    <br><br>
+                    <!--    
+					<div id="disqus_thread"></div>
+                        <script>
+                            var disqus_config = function () {
+                                this.page.url = ;
+                            };
+       
+                            (function() {  
+                                var d = document, s = d.createElement('script');
+                                s.src = 'https://pragimtech.disqus.com/embed.js';
+                                s.setAttribute('data-timestamp', +new Date());
+                                (d.head || d.body).appendChild(s);
+                            })();
+                        </script>
+					-->
+                    <br clear="all">
+                	<div class="text-center">
+		<p class="text-center">© 2020 <a href="https://www.pragimtech.com/" target="_blank">Pragimtech</a>. All Rights Reserved.</p>
+	</div>
+            </div>
+           
+				<div class="desktop_adview">
+					<script async="" src="./useEffect hook in React_files/f(6).txt"></script>				
+	<ins class="adsbygoogle" style="display: block; height: 600px;" data-ad-client="ca-pub-7734594910835218" data-ad-slot="4396868448" data-ad-format="auto" data-full-width-responsive="true" data-adsbygoogle-status="done" data-ad-status="filled"><div id="aswift_2_host" tabindex="0" title="Advertisement" aria-label="Advertisement" style="border: none; height: 600px; width: 207px; margin: 0px; padding: 0px; position: relative; visibility: visible; background-color: transparent; display: inline-block; overflow: visible;"><iframe id="aswift_2" name="aswift_2" style="left:0;position:absolute;top:0;border:0;width:207px;height:600px;" sandbox="allow-forms allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-top-navigation-by-user-activation" width="207" height="600" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" src="./useEffect hook in React_files/ads(1).html" data-google-container-id="a!3" data-google-query-id="CLf80MibgoADFYFEaAodONQJMA" data-load-complete="true"></iframe></div></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+				</div>
+					
+	<div class="desktop_adview">
+					<script async="" src="./useEffect hook in React_files/f(6).txt"></script>				
+	<ins class="adsbygoogle" style="display: block; height: 600px;" data-ad-client="ca-pub-7734594910835218" data-ad-slot="4396868448" data-ad-format="auto" data-full-width-responsive="true" data-adsbygoogle-status="done" data-ad-status="filled"><div id="aswift_3_host" tabindex="0" title="Advertisement" aria-label="Advertisement" style="border: none; height: 600px; width: 207px; margin: 0px; padding: 0px; position: relative; visibility: visible; background-color: transparent; display: inline-block; overflow: visible;"><iframe id="aswift_3" name="aswift_3" style="left:0;position:absolute;top:0;border:0;width:207px;height:600px;" sandbox="allow-forms allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-top-navigation-by-user-activation" width="207" height="600" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" src="./useEffect hook in React_files/ads(2).html" data-google-container-id="a!4" data-google-query-id="CKjC0cibgoADFQVNaAodZ3EIqQ" data-load-complete="true"></iframe></div></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+				</div>
+            </div>
+        </div>
+        
+        
+		<script src="./useEffect hook in React_files/jquery.min.js.download"></script><script src="./useEffect hook in React_files/bootstrap.min.js.download"></script><script src="./useEffect hook in React_files/jquery.slimscroll.js.download"></script><script src="./useEffect hook in React_files/klorofil-common-nonminify.js.download"></script><script src="./useEffect hook in React_files/prism.js.download"></script><link rel="icon" type="image/png" sizes="96x96" href="https://www.pragimtech.com/assets_v_0.9/img/favicon2.svg?v=2"><link rel="stylesheet" href="./useEffect hook in React_files/font-awesome.min.css"><link rel="stylesheet" href="./useEffect hook in React_files/prism.css"><link href="./useEffect hook in React_files/css" rel="stylesheet"><link href="./useEffect hook in React_files/css(1)" rel="stylesheet"><link href="./useEffect hook in React_files/css(2)" rel="stylesheet"><link href="./useEffect hook in React_files/css(3)" rel="stylesheet">				
+        <!-- Js function to highlight the side bar element -->
+            <script type="text/javascript">
+            $(document).ready(function() {
+        		$("#2320200504164409").addClass("active");
+        	    $("#2320200504164409").get(0).focus();
+         	});
+			$("#sidebar_course_selection").change(function(){
+            	window.location.href = $(this).val();
+        	});
+        	$("#draft_course_selection").change(function(){
+           		window.location.href = "?topic_id="+ $(this).val();
+        	});
+	
+				$(document).on("click touchstart scroll", ".main", function(e) {
+        			if ($("body").hasClass("layout-fullwidth offcanvas-active")) {
+                		$("body").removeClass("layout-fullwidth offcanvas-active");
+                		$("body").toggleClass("undefined");
+            		}
+        		});
+        </script>
+		
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async="" src="./useEffect hook in React_files/js(1)"></script>
+		<script>
+ 			window.dataLayer = window.dataLayer || [];
+  			function gtag(){dataLayer.push(arguments);}
+  			gtag('js', new Date());
+			gtag('config', 'UA-162832440-1');
+		</script>
+		
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async="" src="./useEffect hook in React_files/js(2)"></script>
+		<script>
+		  window.dataLayer = window.dataLayer || [];
+		  function gtag(){dataLayer.push(arguments);}
+		  gtag('js', new Date());
+
+		  gtag('config', 'UA-139795661-3');
+		</script>
+		
+		
+    
+<ins class="adsbygoogle adsbygoogle-noablate" data-adsbygoogle-status="done" style="display: none !important;" data-ad-status="unfilled"><div id="aswift_0_host" tabindex="0" title="Advertisement" aria-label="Advertisement" style="border: none; height: 0px; width: 0px; margin: 0px; padding: 0px; position: relative; visibility: visible; background-color: transparent; display: inline-block;"><iframe id="aswift_0" name="aswift_0" style="left:0;position:absolute;top:0;border:0;width:undefinedpx;height:undefinedpx;" sandbox="allow-forms allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-top-navigation-by-user-activation" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" src="./useEffect hook in React_files/ads(3).html" data-google-container-id="a!1" data-load-complete="true"></iframe></div></ins><iframe src="./useEffect hook in React_files/aframe.html" width="0" height="0" style="display: none;"></iframe></body><iframe id="google_esf" name="google_esf" src="./useEffect hook in React_files/zrt_lookup.html" style="display: none;"></iframe></html>

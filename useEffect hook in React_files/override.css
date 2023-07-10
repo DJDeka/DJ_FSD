@@ -1,0 +1,524 @@
+/* Top right bottom left */
+
+*{
+    box-sizing: border-box;
+}
+body {
+    font-family: "Roboto",sans-serif;
+    font-size: 15px;
+}
+.carousel-inner>.item>img, .img-responsive, .thumbnail a>img, .thumbnail>img, img {
+    display: block;
+}
+ol, ul {
+    margin-top: 0;
+}
+
+hr {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: 0;
+    border-top: 1px solid #eee;
+}
+
+
+/**
+ * ==============================================
+ * Elements
+ * ==============================================
+ */
+  
+/*
+custom-inupt-button-submit
+custom-inupt-button-danger
+*/
+/* Button */
+.custom-inupt-button{color: #fff;
+    cursor: pointer;
+    border-radius: 2px;
+    height: 40px; width: 140px;
+    float: right;
+    margin-top: 10px;
+    display: flex;
+    box-shadow: 0 4px 12px 0 rgba(0,112,192,.5);
+    transition: all .4s ease;
+}
+
+.custom-inupt-button > span{ margin:auto;}
+.danger-button { background: #cb4335;}
+.submit-button{ background: #2874a6;}
+
+
+
+============================
+Disqus
+===========================
+.privacy-policy {
+	visibility:hidden;
+}
+
+
+
+
+
+
+
+/**
+ * ==============================================
+ * Dot Floating
+ * ==============================================
+ */
+ .stage {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 0;
+    margin: 0 -5%;
+    overflow: hidden;
+ }
+ 
+ 
+.dot-floating {
+  position: relative;
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+  background-color: #29b8e8;
+  color: #29b8e8;
+  animation: dotFloating 3s infinite cubic-bezier(0.15, 0.6, 0.9, 0.1);
+}
+
+.dot-floating::before, .dot-floating::after {
+  content: '';
+  display: inline-block;
+  position: absolute;
+  top: 0;
+}
+
+.dot-floating::before {
+  left: -12px;
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+  background-color: #29b8e8;
+  color: #29b8e8;
+  animation: dotFloatingBefore 3s infinite ease-in-out;
+}
+
+.dot-floating::after {
+  left: -24px;
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+  background-color: #29b8e8;
+  color: #29b8e8;
+  animation: dotFloatingAfter 3s infinite cubic-bezier(0.4, 0, 1, 1);
+}
+
+@keyframes dotFloating {
+  0% {
+    left: calc(-50% - 5px);
+  }
+  75% {
+    left: calc(50% + 105px);
+  }
+  100% {
+    left: calc(50% + 105px);
+  }
+}
+
+@keyframes dotFloatingBefore {
+  0% {
+    left: -50px;
+  }
+  50% {
+    left: -12px;
+  }
+  75% {
+    left: -50px;
+  }
+  100% {
+    left: -50px;
+  }
+}
+
+@keyframes dotFloatingAfter {
+  0% {
+    left: -100px;
+  }
+  50% {
+    left: -24px;
+  }
+  75% {
+    left: -100px;
+  }
+  100% {
+    left: -100px;
+  }
+}
+
+
+
+
+
+.main{
+	overflow-x:auto;
+}
+/* Unknown style */
+.google-ad {
+    width:80%;
+    margin:auto;
+}
+
+/* Previous article icon style */
+.prev_icon{
+    margin-left:1%;
+    float:left;
+    height:50px;
+    width:100px;
+}
+
+/* Next article icon style */
+.next_icon{
+    margin-right:1%;
+    float:right;
+    height:50px;
+    width:100px;
+}
+
+/* Div that looks like a linux command line */
+.linux_command_view{
+    font-family:terminal, monaco, monospace;
+    font-size:12px;
+    padding:8px;
+    background-color: #272822;
+    border-radius:3px;   
+}
+
+/* styles the icon and the value (Eg. Author_name) */
+.article-page-author-name{
+	font-size:13px;
+	font-weight:600;
+	color:#000;
+	font-family: 'Comfortaa', cursive;
+}
+
+.article-page-article-info{
+	padding:1em 0 0 0;
+	display:flex;
+	margin-bottom:2em;
+}
+.article-page-author-img{
+	border-radius:50%;
+	width:3em;
+	height:3em;
+	display:inline;
+}
+
+a{
+	color:#000;
+}
+
+.article-info-inner-div{
+	margin-top:5px;
+	margin-left:12px;
+	font-size:13px;
+	display:inline;
+}
+
+/* Used for published date in the article header */
+.article-page-date{
+	margin-top:1px;
+	display:block;
+	font-family: 'Solway', serif;
+}
+
+.follow-author{
+	border:0.09em solid #000;
+	font-size:0.8em;
+	color:#000;
+	margin-left:5px;
+	border-radius:12%;
+	font-family: 'Solway', serif;
+	padding:3px 6px 3px 6px;
+}
+
+.author_name{
+    margin-left:0.5px;
+    font-size:12px;
+}
+
+.article_view h2 {
+    color: #000;
+    line-height:1.2em;
+    background-color: #fff;
+   
+    /*box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);*/
+    font-size: 30px;
+    padding:10px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+    width:100%;
+    margin:0px;
+}
+.article_view h1 {
+    font-family: "Segoe UI",Arial,sans-serif;
+    font-weight:400;
+    color: #000;
+    font-size:2.5em;
+    margin-bottom:0px;
+}
+
+/* This will styles the un-ordered list items in the article view */
+.article_view .article_body ul {
+    padding-left:1.8em;
+	font-size: 1em;
+	margin-bottom:1.5em;
+
+}
+
+/* This will styles the ordered list items in the article view */
+.article_view .article_body li {
+    line-height:1.5em;
+    word-spacing:1.3px;
+    margin-bottom:0.5em;
+    color:#333333;
+    font-size: 19px;
+}
+
+/* This will styles paragraph in the article view */
+.article_view .article_body p {
+	margin-bottom:1.5em;
+	line-height:1.5em;
+	word-spacing: 1.5px;
+    color: #333333;
+    font-size: 19px;
+}
+
+/* This will style heading2 in the article view */
+.article_view>.article_body>h2 {
+	font-size:1.8em;
+	margin-top:1.5em;
+	font-weight:400;
+    margin-bottom:0.7em;
+    color: #323131;
+}
+
+/* This will style heading3 in the article view */
+.article_view .article_body h3 {
+    margin-top:1.6em;
+    margin-bottom:0.5em;
+    padding-left: 0.1em;
+    line-height:1.3em;
+    color: #000;
+}
+
+/* This will style h4 in the article view */
+.article_view .article_body h4 {
+    color: #000;
+}
+
+/* This will style h5 in the article view */
+.article_view .article_body h5 {
+    margin-bottom :1.5em;
+    padding-bottom :1em;
+    border-bottom : 1px solid #ccc;
+}
+
+/* This style displays the image with border */
+.article_view .image-with-border {
+    border: 1px solid #ccc;
+    margin:auto;
+    margin-top: 2em;
+    margin-bottom:2em;
+}
+
+/* This style displays the image without border */
+.article_view .image-without-border{
+    margin:auto;
+    margin-top: 2em;
+    margin-bottom:2em;
+}
+
+/* used for copyright layout */
+.copyright {
+    text-align:center;
+    padding: 10px;
+}
+
+
+/* Unknown style */
+.carousel-inner>.item>img,
+.img-responsive,
+.thumbnail a>img,
+.thumbnail>img,
+img {
+    display: block
+}
+
+/*.sidebar_title h1 {
+    text-align: center;
+    font-size: 20px;
+    font-family: Roboto, normal;
+    color: #000
+}*/
+
+
+
+
+
+/* ****************************************************************** */
+/* Sidebar */
+
+/* This style is being used in the sidebar topic title name */
+.sidebar_topic_title h1 {
+    text-align: center;
+    margin-left:15px;
+    font-size: 21px;
+    font-family: Roboto, normal;
+    color: #000;
+    
+}
+/* To divide the topic category in sidebar */
+.title_divider {
+    -webkit-align-items: center;
+    align-items: center;
+    margin-top: 0;
+    width: 100%;
+    height: 1px;
+    background: #ccc;
+    scroll-margin:80px;
+}
+
+.sidebar .nav>li>h1 {
+    margin-top:25px;
+    margin-bottom:7px;
+    
+    
+}
+
+/**
+ * ==============================================
+ * Editor styles
+ * ==============================================
+ */
+
+.doride-example{
+    margin-top:25px;
+    background:#f1f1f1;
+    padding: 8px 20px;
+    height:auto;
+    font-family:"Segoe UI",Arial,sans-serif;
+}
+
+
+.code-compile{
+    padding:10px;
+    text-align:center;
+    display:inline-block;
+    background:#29b8e8;
+    font-size:15px;
+    color:#fff;
+    margin-bottom:10px;
+    font-family: "Segoe UI",Arial,sans-serif;
+}
+.code-compile > a{
+     color:#ffffff;
+}
+
+.article-definition {
+    background:#DFF6FE;
+    padding:10px;
+    margin:0px;
+    padding-top:1.5em;
+}
+
+.article_view > hr {
+    background:#F0F6F9;
+    height:1px;
+    width:100%;
+    margin:10px;
+}
+
+
+
+/* ================================================================================================================ */
+
+/* Style for Mobile View */ 
+@media screen and (max-width: 1024px) {
+
+    /* Right side bar will be disabled in mobile view */
+    .desktop_adview {
+        display:none;
+    }
+	
+	.article_view {
+    background: #fff;
+    padding : 0.8em;
+	font-family: 'PT Serif', serif;
+	display:inline-block;
+	width:100%;
+}
+
+/* Used for user profile icon */
+.nav_user_profile_icon{
+    margin-top:11px;
+    padding:5px;
+    font-size:27px;
+}
+
+.doride-example{
+    margin-top:25px;
+    background:#f1f1f1;
+    padding: 4px 12px;
+    height:auto;
+    font-family:"Segoe UI",Arial,sans-serif;
+    margin-left:-12px;
+    margin-right:-12px;
+}
+	
+}
+
+
+/* ================================================================================================================= */
+
+/* Style for Desktop view */
+@media screen and (min-width: 1024px) {
+
+    /* Top Navigation bar style */
+    .navbar {
+        position: fixed;
+        min-height: 50px;
+        height: 60px;
+        border: 1px solid transparent
+    }
+
+     /* Right sideBar style */
+    .desktop_adview {
+        display:inline;
+		width:19%;
+		float:right;
+        max-width:420px;
+        height:100%;
+        margin:10px;
+    }
+
+    /* Article layout */
+    .article_view{
+        width:75.5%;
+        border-right:solid 1px #F0F6F9;
+        float:left;	
+        background: #fff;
+        padding : 0.5em 1em 1em 1em;
+        margin: 6px;
+	    max-width:1024px;
+	    font-family: 'PT Serif', serif;
+	    display:inline-block;
+    }
+    .nav_user_profile_icon{
+        margin-top:9px;
+        padding:5px;
+        font-size:27px;
+    }   
+    
+}

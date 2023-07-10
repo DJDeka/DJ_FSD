@@ -1,0 +1,10 @@
+function GetElqContentPersonalizationValue(strDataField){ var strTemp = '';        if(strDataField == 'V_IPAddress' || strDataField == 'IPAddress'){strTemp = '223.238.123.20';}
+        if(strDataField == 'V_Total_Pages' || strDataField == 'Total_Pages'){strTemp = '2';}
+        if(strDataField == 'V_Total_Time' || strDataField == 'Total_Time'){strTemp = '0';}
+        if(strDataField == 'V_Total_Visits' || strDataField == 'Total_Visits'){strTemp = '2';}
+        if(strDataField == 'V_LastVisitDateAndTime' || strDataField == 'LastVisitDateAndTime'){strTemp = '2023-07-05 11:30:56.673';}
+        if(strDataField == 'V_ElqCompanyName' || strDataField == 'ElqCompanyName'){strTemp = 'Airtel';}
+        if(strDataField == 'V_CountryFromIP' || strDataField == 'CountryFromIP'){strTemp = 'India';}
+        if(strDataField == 'V_CompanyNameFromIP1' || strDataField == 'CompanyNameFromIP1'){strTemp = 'Airtel';}
+        if(strDataField == 'V_CityFromIP' || strDataField == 'CityFromIP'){strTemp = 'Bangalore';}
+	return strTemp; } if (this.SetElqContent){ SetElqContent(); }
